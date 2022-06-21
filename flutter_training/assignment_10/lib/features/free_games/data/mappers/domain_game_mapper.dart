@@ -30,4 +30,29 @@ class DomainGameMapper {
           .toList(),
     );
   }
+
+  DomainGame unmap(Game game) {
+    return DomainGame(
+        id: game.id,
+        title: game.title,
+        thumbnail: game.thumbnail,
+        shortDescription: game.shortDescription,
+        description: game.description,
+        gameUrl: game.gameUrl,
+        genre: game.genre,
+        platform: game.platform,
+        publisher: game.publisher,
+        developer: game.developer,
+        releaseDate: game.releaseDate,
+        minimumSystemRequirements: {
+          'os': game.minimumSystemRequirements.os,
+          'processor': game.minimumSystemRequirements.processor,
+          'memory': game.minimumSystemRequirements.memory,
+          'graphics': game.minimumSystemRequirements.graphics,
+          'storage': game.minimumSystemRequirements.storage,
+        },
+        screenshots: game.screenshots
+            .map((e) => {'id': e.id, 'image': e.image})
+            .toList());
+  }
 }
