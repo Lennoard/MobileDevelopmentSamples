@@ -15,7 +15,7 @@ class GetGamesUseCase extends UseCase<List<Game>, Params> {
 
   @override
   Future<Either<Failure, List<Game>>> call(Params params) async {
-    var domainGames = await _gameRepository.getGamesByPlatform(params.platform);
+    var domainGames = await _gameRepository.getGamesList();
     return domainGames.map((list) =>
         list.map((game) => _gameMapper.map(game)).toList()
     );
